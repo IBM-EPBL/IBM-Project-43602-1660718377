@@ -1,6 +1,6 @@
 ![banner](https://user-images.githubusercontent.com/113270585/192084358-c260f16f-c752-410a-a3f7-c3dab526fba8.jpeg)
 
-<h1>CUSTOMER CARE REGISTRY✨</h1
+<h1>CUSTOMER CARE REGISTRY🔖</h1
 
 
 <h3>DOMAIN NAME:</h3> <h4>CLOUD APPLICATION DEVELOPMENT</h4>
