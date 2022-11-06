@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='myfont/css/all.min.css')}}">
+
+    <script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+   <style>
+        .shadow{
+            box-shadow:3px 3px 10px black;
+            padding:30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="margin-top:100px">
+        <div class="col-md-offset-3 col-md-5">
+            <div class="shadow">
+                <form method="POST" action="/register">
+                    <h2 class="page-header text-primary text-center">Registration</h2>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                     <div class="form-group">
+                        <label>Address</label>
+                        <textarea class="form-control" name="address" required></textarea>
+                     </div>
+                    <div class="form-group">
+                        <label>Contact</label>
+                        <input type="text" class="form-control" name="contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label>password</label>
+                        <input type="text" class="form-control" name="password" required>
+                    </div>
+                     <div class="form-group">
+                        <input type="submit" class="btn btn-success btn-block" value="Register">
+                         <a href="{{url_for('index')}}" class="btn btn-primary btn-block">Back to Home</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        $("form").attr("autocomplete","off");
+    });
+</script>
