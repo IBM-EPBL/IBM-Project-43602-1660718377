@@ -1,0 +1,1 @@
+INSERT INTO Persons(PersonID,LastName,FirstName,Address,City)VALUES(01,'JACOBRAJ','JAMES','NAZARETH,','TUTICORIN');
