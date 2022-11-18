@@ -1,0 +1,48 @@
+{% extends "common_template.html" %}
+{% block title %} {{title}} {% endblock %}
+{% block content %}
+<section class="vh-100">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6">
+              <h4 class="pull-left">{{title}}</h4>
+          </div>
+          <div class="col-md-6 d-flex flex-row-reverse">
+              <a href="/ticket/create"><button class="btn btn-sm btn-success float-right">Add New Ticket</button></a>
+          </div>
+      </div>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>User</th>
+        <th>Agent</th>
+        <th>Note</th>
+        <th></th>
+    </tr>
+    {%if tickets | length == 0%}
+    <tr>
+        <td colspan="7"><em>No Data Found.</em></td>
+    </tr>
+    {%endif%}
+    {%for inv in tickets%}
+    <tr>
+        <td>{{inv['TITLE']}}</td>
+        <td>{{inv['DESCRIPTION']}}</td>
+        <td>{{inv['PRIORITY']}}</td>
+        <td>{{inv['USER_NAME']}}</td>
+        <td>{{inv['AGENT_NAME']}}</td>
+        <td>{{inv['NOTE']}}</td>
+        <td><a href="/ticket/edit/{{inv['ID']}}">Edit</a>
+            {%if session.user_type == 'admin' and inv['STATUS'] != 1 %}
+            <a href="javascript:void(0)" onclick="if(confirm('Are you sure to close this ticket?')) window.location = '/ticket/close/{{inv['ID']}}'; ">Close</a>
+            {% endif %}
+        </td>
+    </tr>
+    {%endfor%}
+</table>
+</div>
+</section>
+{% endblock %}
