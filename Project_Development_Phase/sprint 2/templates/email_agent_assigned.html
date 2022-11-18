@@ -1,0 +1,32 @@
+<div class="container d-flex justify-content-center pt-5">
+    <div class="card col-md-4 mb-4 mt-5">
+    Hi {{agent.NAME}}, <br><br>
+      Your have assigned to the ticket with following details. Please help the customer to solve this problem. <br><br>
+     <table border="1">
+        <tr>
+         <th>Customer Name</th>
+         <td>{{user.NAME}}</td>
+       </tr>
+        <tr>
+         <th>Customer Mobile</th>
+         <td>{{user.MOBILE}}</td>
+       </tr>
+       <tr>
+         <th>Title</th>
+         <td>{{ticket.TITLE}}</td>
+       </tr>
+       <tr>
+         <th>Description</th>
+         <td>{{ticket.DESCRIPTION}}</td>
+       </tr>
+       <tr>
+         <th>Priority</th>
+         <td>{{ticket.PRIORITY}}</td>
+       </tr>
+       <tr>
+         <th>Status</th>
+         <td>{{ticket.STATUS == 1 and 'Closed' or 'Opened'}}</td>
+       </tr>
+     </table>
+</div>
+</div>
