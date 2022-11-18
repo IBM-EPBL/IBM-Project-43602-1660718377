@@ -1,0 +1,24 @@
+<div class="container d-flex justify-content-center pt-5">
+    <div class="card col-md-4 mb-4 mt-5">
+    Hi {{user.NAME}}, <br><br>
+      Your ticket with following details has been closed. <br><br>
+     <table border="1">
+       <tr>
+         <th>Title</th>
+         <td>{{ticket.TITLE}}</td>
+       </tr>
+       <tr>
+         <th>Description</th>
+         <td>{{ticket.DESCRIPTION}}</td>
+       </tr>
+       <tr>
+         <th>Priority</th>
+         <td>{{ticket.PRIORITY}}</td>
+       </tr>
+       <tr>
+         <th>Status</th>
+         <td>{{ticket.STATUS == 1 and 'Closed' or 'Opened'}}</td>
+       </tr>
+     </table>
+</div>
+</div>
