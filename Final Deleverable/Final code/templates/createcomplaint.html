@@ -1,0 +1,65 @@
+{% extends "common_template.html" %}
+{% block title %}Create Ticket{% endblock %}
+{% block content %}
+<section class="vh-100">
+  <div class="container d-flex justify-content-center pt-0">
+    <div class="card col-md-4 mb-4 mt-2">
+        <div class="card-body">
+            <h4 class="card-title">Create a Ticket</h4>
+
+             <form method="post" action="/ticket/create">
+                 <input type="hidden" name="id" value="{{ticket.ID}}">
+                <div class="mb-3 mt-3">
+                    <label for="title" class="form-label">Title:</label>
+                    <input type="title" class="form-control" id="title" placeholder="Enter title" name="title" required value="{{ticket.TITLE}}">
+                  </div>
+                 <div class="mb-3 mt-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <input type="text" class="form-control" id="description" placeholder="Enter description" name="description" required value="{{ticket.DESCRIPTION}}">
+                  </div>
+                 <div class="mb-3 mt-3">
+                    <label for="priority" class="form-label">Priority:</label>
+                     <div class="dropdown">
+                           <select name="priority" id="priority" class="form-control" required>
+                            <option value="high" {%if ticket.PRIORITY == 'high'%} selected='selected'  {%endif%}">High</option>
+                            <option value="medium" {%if ticket.PRIORITY == 'medium'%} selected='selected'  {%endif%}">Medium</option>
+                            <option value="low" {%if ticket.PRIORITY == 'low'%} selected='selected'  {%endif%}">Low</option>
+                            </select>
+                        </div>
+                  </div>
+                  {% if session.user_type == 'admin' %}
+                   <div class="mb-3 mt-3">
+                    <label for="agent_id" class="form-label">Agent:</label>
+                     <div class="dropdown">
+                           <select name="agent_id" id="agent_id" class="form-control" required>
+                               <option value="">Select an Agent</option>
+                               {%for agent in agents%}
+                               <option value="{{agent.ID}}" {%if ticket.AGENT_ID == agent.ID %} selected='selected'  {%endif%}">{{agent.NAME}}</option>
+                                {%endfor%}
+                           </select>
+                        </div>
+                  </div>
+                  {% endif %}
+                  {% if session.user_type == 'agent' %}
+                    <div class="mb-3 mt-3">
+                    <label for="status" class="form-label">Status:</label>
+                     <div class="dropdown">
+                           <select name="status" id="status" class="form-control" required>
+                               <option value="">Select Status</option>
+                               <option value="0" {%if ticket.STATUS == 0 %} selected='selected'  {%endif%}">OPEN</option>
+                               <option value="1" {%if ticket.STATUS == 2 %} selected='selected'  {%endif%}">READY TO CLOSE</option>
+                             </select>
+                        </div>
+                  </div>
+                  {% endif %}
+
+
+<button type="submit" class="btn btn-danger">Cancel</button>
+<button type="submit" class="btn btn-success float-end">Save</button>
+                 </form>
+  </div>
+
+
+  </div>
+</section>
+{% endblock %}
